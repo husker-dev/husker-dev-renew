@@ -1,0 +1,20 @@
+spin-list {
+	position: relative;
+	width: 100%;
+	display: flex;
+
+	> .first {
+		display: flex;
+	    width: 100%;
+	    justify-content: space-around;
+	}
+
+	> .second {
+		display: flex;
+	    width: 100%;
+	    left: 100%;
+	    position: absolute;
+	    justify-content: space-around;
+	}
+    
+}

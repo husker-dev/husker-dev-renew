@@ -1,0 +1,131 @@
+<style type="text/css">
+
+	h1 {
+		font-size: 70pt;
+	}
+
+	.transparent-text {
+		color: black;
+		--border-color: #ffc200;
+	    text-shadow: 0 -1px 0 var(--border-color), 0 1px 0 var(--border-color), -1px 0 0 var(--border-color), 1px 0 0 var(--border-color);
+	}
+
+	.block {
+		width: 100%;
+		padding: 0 var(--horizontal-padding);
+	    position: relative;
+	    box-sizing: border-box;
+	}
+
+	.dark {
+		background: black;
+		box-shadow: 0 0 190px 200px black;
+		position: relative;
+		padding-top: 50px;
+	}
+
+	.gray {
+		background: rgba(15, 15, 15, 1);
+		padding-top: 10px;
+	}
+
+	.main-block {
+	    /*height: calc(100vh - var(--header-height));*/
+	    height: 900px;
+	    padding-bottom: 200px;
+
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: flex-end;
+
+		> .hello {
+			font-size: 35pt;
+			margin-top: 400px;
+		}
+
+		> .name {
+			font-size: 90pt;
+			line-height: 100%;
+			z-index: 1;
+			position: relative;
+		}
+
+		> .photo {
+			position: absolute;
+		    width: 900px;
+		    right: calc(var(--horizontal-padding));
+		    bottom: 0px;
+	        filter: drop-shadow(21px 15px 0px #ffffff);
+		}
+	}
+
+	.spinnings {
+		display: flex;
+		flex-direction: column;
+		gap: 80px;
+
+		spin-list {
+			.item {
+				display: flex;
+				align-items: center;
+				gap: 7px;
+				color: rgba(60, 60, 60, 1);
+
+				width: auto;
+				height: 30px;
+				
+				img {
+					height: 100%;
+				}
+
+				div {
+					font-size: 20pt;
+					font-weight: 800;
+
+					position: relative;
+	  				bottom: -0.1em;
+				}
+			}
+		}
+	}
+
+	.dark-to-gray {
+		background: linear-gradient(rgba(0, 0, 0, 1), rgba(15, 15, 15, 1));
+		height: 200px;
+	    position: relative;
+	}
+
+	
+
+</style>
+
+
+<div class="block main-block">
+	<h1 class="hello transparent-text">HELLO, I'M</h1>
+	<h1 class="name">NIKITA</h1>
+	<h1 class="name">SHTENGAUER</h1>
+	<img src="photo.png" class="photo"/>
+</div>
+<div class="dark spinnings">
+	<spin-list data-direction="-1">
+		<svg-loader class="item" data-path="opengl.svg"></svg-loader>
+		<svg-loader class="item" data-path="vertx.svg"></svg-loader>
+		<svg-loader class="item" data-path="opencl.svg"></svg-loader>
+		<svg-loader class="item" data-path="docker.svg"></svg-loader>
+		<svg-loader class="item" data-path="webgl.svg"></svg-loader>
+		<svg-loader class="item" data-path="vulkan.svg"></svg-loader>
+	</spin-list>
+	<spin-list data-direction="1">
+		<svg-loader class="item" data-path="vulkan.svg"></svg-loader>
+		<svg-loader class="item" data-path="webgl.svg"></svg-loader>
+		<svg-loader class="item" data-path="docker.svg"></svg-loader>
+		<svg-loader class="item" data-path="opencl.svg"></svg-loader>
+		<svg-loader class="item" data-path="vertx.svg"></svg-loader>
+		<svg-loader class="item" data-path="opengl.svg"></svg-loader>
+	</spin-list>
+</div>
+<div class="dark-to-gray"></div>
+<div class="block gray" style="height: 800px">
+	Test
+</div>

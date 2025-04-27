@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="My site">
+
+	<title>husker-dev</title>
+
+	<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="preload" href="./basis33.ttf" as="font" crossorigin="anonymous">
+
+	<script type="text/javascript" src="libs/background-canvas.js"></script>
+	<script type="text/javascript" src="libs/routing.js"></script>
+
+	<script type="text/javascript" src="libs/svg-loader/svg-loader.js"></script>
+	<link href="libs/svg-loader/svg-loader.css" rel="stylesheet">
+
+	<script type="text/javascript" src="libs/spinning/spinning.js"></script>
+	<link href="libs/spinning/spinning.css" rel="stylesheet">
+
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		@font-face {
+			font-family: "basis33";
+			src: url("basis33.ttf") format("truetype");
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: "choco";
+			src: url("Painting_With_Chocolate.ttf") format("truetype");
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: "jump";
+			src: url("Higher Jump.ttf") format("truetype");
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: "kerod";
+			src: url("Kerod Twenty Five.otf") format("truetype");
+			font-display: swap;
+		}
+
+		a, a:link, a:visited, a:hover, a:active {
+			all: unset;
+			cursor: pointer;
+			-moz-user-select: none;
+		    -khtml-user-select: none;
+		    -webkit-user-select: none;
+		    -ms-user-select: none;
+   			user-select: none;
+		}
+
+		html {
+			--background: black;
+
+			--header-height: 80px;
+			--header-background: black;
+
+			--page-width: 1300px;
+
+			--horizontal-padding: calc(max(0px, (100% - var(--page-width)) / 2));
+
+			background: var(--background);
+			font-family: Vazirmatn;
+		}
+
+		body {
+			overflow-x: hidden;
+		}
+
+		html, body, container, background-canvas {
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+		
+		header {
+			width: 100%;
+			height: var(--header-height);
+			position: fixed;
+			box-sizing: border-box;
+			padding: 10px var(--horizontal-padding);
+			z-index: 9999;
+
+			display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+
+    		transition: all 0.2s ease-in-out;
+			background: var(--header-background);
+			border-bottom: #1d1d1d solid 1px;
+
+			font-family: basis33;
+			text-transform: lowercase;
+
+			html[data-scroll='0'] &, html:not([data-scroll]) & {
+		  		background: transparent;
+		  		border-bottom: none;
+			}
+
+			> .title {
+				font-size: 30pt;
+				color: #ffc200;
+
+				&::after{
+					content: " >/";
+					color: rgba(255, 255, 255, 0.3);
+				}
+			}
+
+			> .buttons {
+				font-size: 24pt;
+				text-transform: uppercase;
+				display: flex;
+				color: white;
+
+				> * {
+					margin: 0 30px;
+				}
+
+				> .selected{
+					text-decoration: underline;
+				}
+			}
+		} 
+
+		background-canvas {
+			position: fixed;
+			z-index: -999;
+		}
+
+		container {
+			padding: var(--header-height) 0 0 0;
+			box-sizing: border-box;
+			color: white;
+		}
+		
+	</style>
+
+	<script type="text/javascript">
+		function onScroll(y){
+			document.documentElement.dataset.scroll = y;
+		}
+
+		function init() {
+			document.addEventListener('scroll', () => {
+				document.documentElement.dataset.scroll = window.scrollY;
+			}, { passive: true });
+			onScroll(window.scrollY);
+			initRouting();
+		}
+	</script>
+</head>
+
+<body onload="init()">
+	<header>
+		<a class="title" href="/">@husker-dev</a>
+		<div class="buttons">
+			<a href="/" data-select-on-route="/">profile</a>
+			<a href="/test" data-select-on-route="/test">tools</a>
+		</div>
+	</header>
+	<background-canvas></background-canvas>
+	<container></container>
+</body>
+</html>
